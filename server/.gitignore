@@ -1,4 +1,8 @@
 dist
 node_modules
 socketIO.pdf
-output.pdf
+src/file
+
+.env
+
+input.txt
