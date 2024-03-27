@@ -1,14 +1,21 @@
 "use client";
 import axios from "axios";
 import { useState } from "react";
-
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { useRouter } from "next/navigation";
+import {atom, useRecoilState} from "recoil"
 
+
+
+// const pdfState = atom({
+//   key: "pdf",
+//   default : null
+// })
 
 export default function Home() {
-  const [text, setText] = useState("")
+  const [text, setText] = useState("");
 
-  console.log(text)
+  const router = useRouter();
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen h-full w-full relative antialiased">
@@ -32,9 +39,9 @@ export default function Home() {
             <button
               className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200"
               onClick={async() => {
-                  const response = await axios.post("http://localhost:3000/api/v1/text", {text: text, heading: "Heading", output: "output1"})
-
-                  console.log(response.data)
+                  // const response = await axios.post("http://localhost:3000/api/v1/text", {text: text, heading: "Heading", output: "output1"})
+                  // console.log(response.data)
+                  router.push("/pdf")
               }}
             >
               Post Text
