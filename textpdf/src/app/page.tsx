@@ -2,6 +2,8 @@
 import axios from "axios";
 import { useState } from "react";
 
+import { BackgroundBeams } from "@/components/ui/background-beams";
+
 
 export default function Home() {
   const [text, setText] = useState("")
@@ -9,11 +11,11 @@ export default function Home() {
   console.log(text)
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen h-full w-full">
-      <h1 className="text-4xl text-white font-bold mb-6">TEXT TO PDF</h1>
-
+    <div className="flex flex-col justify-center items-center min-h-screen h-full w-full relative antialiased">
+      <h1 className="text-4xl relative z-10 text-white font-bold mb-6">TEXT TO PDF</h1>
+ 
      
-        <div className="w-1/2 mb-4 border border-gray-200 rounded-lg bg-gray-50 h-full">
+        <div className="w-1/2 relative z-10 mb-4 border border-gray-200 rounded-lg bg-gray-50 h-full">
           <div className="px-4 py-2 bg-white rounded-t-lg ">
             <label htmlFor="comment" className="sr-only">
              Your Text
@@ -39,7 +41,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-   
+        <BackgroundBeams />
     </div>
   );
 }
