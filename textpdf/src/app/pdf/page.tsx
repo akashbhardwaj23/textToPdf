@@ -1,15 +1,14 @@
 import axios from "axios"
 
-
 export default async function Pdf(){
     const data = await getPdf();
     return (
-        <div>
+        <div className="relative z-10">
+            {/* { raw pdf data} */}
            <p>{data}</p>
         </div>
     )
 }
-
 
 
 

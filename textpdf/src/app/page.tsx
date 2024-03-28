@@ -1,9 +1,7 @@
 "use client";
-import axios from "axios";
+
 import { useState } from "react";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import { useRouter } from "next/navigation";
-import {atom, useRecoilState} from "recoil"
 
 
 
@@ -48,7 +46,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <BackgroundBeams />
+       
     </div>
   );
 }
