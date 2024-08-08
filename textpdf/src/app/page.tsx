@@ -1,17 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { getPdf } from "./server/action";
+import { useRecoilState } from "recoil"
+import { useState } from "react";
+import { pdfState } from "@/utils/recoil/state";
 
-
-
-// const pdfState = atom({
-//   key: "pdf",
-//   default : null
-// })
 
 export default function Home() {
   const [text, setText] = useState("");
+  const [pdf, setPdf] = useRecoilState(pdfState)
 
   const router = useRouter();
 
@@ -29,7 +27,10 @@ export default function Home() {
               rows={4}
               className="w-full h-full p-2 text-lg text-gray-900 bg-white border-0"
               placeholder="Write a text..."
-              onChange={(e) => setText(e.target.value)}
+              onChange={
+               //@ts-ignore
+                (e) => setText(e.target.value)
+              }
               required
             />
           </div>
@@ -39,6 +40,8 @@ export default function Home() {
               onClick={async() => {
                   // const response = await axios.post("http://localhost:3000/api/v1/text", {text: text, heading: "Heading", output: "output1"})
                   // console.log(response.data)
+                  const respose = await getPdf({text, heading : "Your Pdf", output : "output1"});
+                  setPdf(respose)
                   router.push("/pdf")
               }}
             >

@@ -1,19 +1,15 @@
-import axios from "axios"
+"use client"
 
-export default async function Pdf(){
-    const data = await getPdf();
+import { useRecoilState } from "recoil"
+import { pdfState } from "@/utils/recoil/state"
+
+export default function Pdf(){
+    const text = useRecoilState(pdfState);
+    const data = text[0];
     return (
         <div className="relative z-10">
             {/* { raw pdf data} */}
-           <p>{data}</p>
+           <p>{ data }</p>
         </div>
     )
-}
-
-
-
-async function getPdf() {
-    const response = await axios.post("http://localhost:3000/api/v1/text", {text: "Dummy text", heading: "Heading", output: "output1"})
-    
-    return response.data
 }

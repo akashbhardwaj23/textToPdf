@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import RecoilLayout from "./(RecoilLayout)/layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <RecoilLayout>
         {children}
         <BackgroundBeams />
+        </RecoilLayout>
       </body>
     </html>
   );
