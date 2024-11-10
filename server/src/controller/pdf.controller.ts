@@ -30,7 +30,8 @@ export async function postText(req: any, res: any){
 
     doc.end()
 
-    console.log("Document Created Successfully")
+    console.log("Document Created Successfully");
+    res.setHeader('Content-Type', 'application/pdf');
 
    return res.status(200).sendFile(path.resolve("./src/file", `${output}.pdf`))
 }
